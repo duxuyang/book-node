@@ -100,7 +100,7 @@ router.post('/bookdetail', function(req, res, next) {
 	});
 });
 
-//每本书章节
+//章节标题
 router.post('/title', function(req, res, next) {
 	var id = req.body.id;
   var sql= `select title from book${id}`;
@@ -109,14 +109,16 @@ router.post('/title', function(req, res, next) {
 			res.json(result);
 	});
 })
+
 //每本书章节内容
 router.post('/reader', function(req, res, next) {
 	var id = req.body.id;
-  var sql= `select * from book${id} where id=?`;
-	pool.query(sql,[id],(err,result)=>{
-			if(err)throw err;
-			res.json(result);
-	});
+	var number=req.body.number;
+  var sql= `select name,title,content from book${id} where id=?`;
+	pool.query(sql,[number],(err,result)=>{
+		if(err)throw err;
+		res.json(result);
+	})
 })
 
 
