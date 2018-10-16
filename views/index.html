@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="sentget">发送get</button>
+	<button id="sentpost">发送post</button>
+	<button>发送</button>
+<script src="jquery-1.11.3.js"></script>
+	<script>
+		$("#sentget").on("click",function(){
+			// $.get("http://127.0.0.1:5000/login",{id:324,name:'jim'},function(data,status){
+   //      console.log(data)
+   //    });
+       $.ajax({
+             type: "GET",
+             url: "http://127.0.0.1:5000/login",
+             data: {id:112,name:'lili'},
+             dataType: "json",
+             success: function(data){
+ 
+              }
+         });
+
+
+		})
+		$("#sentpost").on("click",function(){
+			  $.post("http://127.0.0.1:5000/main",{id:11,name:'tom'},function(data,status){
+		        console.log(data)
+		    });
+		})
+
+	</script>
+</body>
+</html>	

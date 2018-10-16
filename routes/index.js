@@ -5,10 +5,8 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render("来得快扩扩绿扩扩扩扩绿");
+ 
 });
-
-
 
 
 //热门小说
@@ -52,8 +50,8 @@ router.post('/freemore', function(req, res, next) {
 		res.json({code:-1,msg:"页大小参数不正确"});
 		return;
 	}
-    var curPage = parseInt((pno-1)*pageSize);
-    var ps = parseInt(pageSize);
+	var curPage = parseInt((pno-1)*pageSize);
+	var ps = parseInt(pageSize);
 	var sql= "SELECT * FROM bookslist LIMIT ?,?";
 	pool.query(sql,[curPage,ps],(err,result)=>{
 			if(err)throw err;

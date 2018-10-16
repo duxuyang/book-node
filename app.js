@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var ejs = require('ejs'); 
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -22,17 +23,28 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.engine('html', ejs.__express);
+app.set('view engine', 'html');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser('sign'));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/users/myinfo',function(req, res, next){
+  console.log(req.signedCookies.userinfo)
+  next();
+});
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+/*//判断登录有没有过时
+app.use('/users/login',function(req, res, next){
+  next()
+})*/
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
