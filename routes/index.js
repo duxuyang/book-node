@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 
 //热门小说
 router.post('/hotbook', function(req, res, next) {
-  var sql= "SELECT * FROM bookslist  ORDER BY  RAND() LIMIT 4";
+  var sql= "SELECT * FROM bookslist where id BETWEEN 30 and 33";
 	pool.query(sql,(err,result)=>{
 			if(err)throw err;
 			res.json(result);
@@ -29,7 +29,7 @@ router.post('/paihang', function(req, res, next) {
 
 //免费读书
 router.post('/freeread', function(req, res, next) {
-	var sql= "SELECT * FROM bookslist  ORDER BY  RAND() LIMIT 4";
+	var sql= "SELECT * FROM bookslist LIMIT 0,4";
 	pool.query(sql,(err,result)=>{
 			if(err)throw err;
 			res.json(result);
