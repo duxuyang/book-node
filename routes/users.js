@@ -33,6 +33,22 @@ router.post('/myinfo', function(req, res) {
   })
 });
 
+
+
+//书库
+router.post('/collect', function(req, res) {
+	let id = req.body.id;
+	let sql=`select * from bookslist b,collect c where c.bid=b.id and c.uid=?`
+	pool.query(sql,[id],(err,result)=>{
+		if(err)throw err;
+	  res.json(result);
+	})
+
+});
+
+
+
+
 router.get('/regist', function(req, res) {
  res.send("2121212121") 
 });
