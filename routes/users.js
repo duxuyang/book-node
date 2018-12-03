@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('卡刷积分卡手机疯狂拉升放大来看');
+  res.send('在哪里');
 });
 
 router.post('/login', function(req, res) {
@@ -33,8 +33,8 @@ router.post('/myinfo', function(req, res) {
   })
 });
 
-router.get('/regist', function(req, res) {
- res.send("2121212121") 
+router.post('/regist', function(req, res) {
+ res.json({code:200});
 });
 
 

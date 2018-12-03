@@ -119,5 +119,25 @@ router.post('/reader', function(req, res, next) {
 	})
 })
 
+//搜索  模糊查询
+router.post('/search', function(req, res, next) {
+	var name = req.body.name;
+  var sql= `select * from bookslist where name like '%${name}%'`;
+	pool.query(sql,(err,result)=>{
+		if(err)throw err;
+		res.json(result);
+	})
+})
+//热门搜索
+router.post('/hotsearch', function(req, res, next) {
+     var sql= "SELECT * FROM bookslist LIMIT 110,10";
+	pool.query(sql,(err,result)=>{
+		if(err)throw err;
+		res.json(result);
+	})
+})
+
+
+
 
 module.exports = router;
