@@ -33,10 +33,6 @@ router.post('/myinfo', function(req, res) {
   })
 });
 
-<<<<<<< HEAD
-router.post('/regist', function(req, res) {
- res.json({code:200});
-=======
 
 
 //书库
@@ -49,15 +45,6 @@ router.post('/collect', function(req, res) {
 	})
 
 });
-
-
-
-
-router.get('/regist', function(req, res) {
- res.send("2121212121") 
->>>>>>> 99e820e38360649b904554b3c97fac6374ae136a
-});
-
 
 
 module.exports = router;

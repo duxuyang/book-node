@@ -137,7 +137,11 @@ router.post('/hotsearch', function(req, res, next) {
 	})
 })
 
-
+router.post('/ceshi', function(req, res, next) {
+	console.log(req.headers.tokenid);
+	res.json({state:200});
+		
+})
 
 
 module.exports = router;
