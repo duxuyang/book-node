@@ -2,12 +2,10 @@ var express = require('express');
 const pool = require("../db");
 var router = express.Router();
 
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
  
 });
-
 
 //热门小说
 router.post('/hotbook', function(req, res, next) {
