@@ -77,14 +77,24 @@ router.post('/type', function(req, res, next) {
 		res.json({code:-1,msg:"页大小参数不正确"});
 		return;
 	}
-
-	  var sql = "SELECT * FROM bookslist where type=? LIMIT ?,?";
-    var curPage = parseInt((pno-1)*pageSize);
+	var curPage = parseInt((pno-1)*pageSize);
     var ps = parseInt(pageSize);
-    pool.query(sql,[type,curPage,ps],(err,result)=>{
+	if(type=="全部"){
+	 var sql = "SELECT * FROM bookslist LIMIT ?,?";
+	 pool.query(sql,[curPage,ps],(err,result)=>{
         if(err)throw err;
 					res.json(result);
     });
+	}else{
+	  var sql = "SELECT * FROM bookslist where type=? LIMIT ?,?";
+		pool.query(sql,[type,curPage,ps],(err,result)=>{
+					if(err)throw err;
+						res.json(result);
+			});
+	}
+	  
+    
+    
 });
 
 

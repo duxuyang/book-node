@@ -13,7 +13,9 @@ var app = express();
  app.all('*', function (req, res, next) {
    res.header("Access-Control-Allow-Credentials", true)
    res.header("Access-Control-Allow-Origin", "*")
-   res.header("Access-Control-Allow-Headers", "X-Requested-With,tokenId")
+	//header('Access-Control-Allow-Origin','http://localhost:4200');
+   //res.header("Access-Control-Allow-Headers", "X-Requested-With,tokenId")
+	res.header("Access-Control-Allow-Headers", "*")
    res.header("Access-Control-Allow-Methods", "POST,GET,DELETE,OPTIONS,PUT")
    res.header("X-Powered-By", ' 3.2.1')
    res.header("Content-Type", "application/json;charset=utf-8")
